@@ -1,0 +1,55 @@
+cmake_minimum_required(VERSION 3.10)
+ 
+file(GLOB c_files *.c *.cpp *.cc)
+ 
+SET(THLIB_PATH /xxxx/xxxx)
+ 
+find_package(utf8_range HINTS ${THLIB_PATH}/proto/lib/cmake CONFIG REQUIRED)
+set(UTF8RANGE_LIBRARY utf8_range::utf8_validity utf8_range::utf8_range)
+ 
+find_package(Protobuf HINTS ${THLIB_PATH}/proto/lib/cmake CONFIG REQUIRED)
+set(PROTO_LIBARARY protobuf::libprotobuf)
+
+find_package(utf8_range CONFIG REQUIRED)
+
+ 
+find_package(absl HINTS ${THLIB_PATH}/absl/lib/cmake CONFIG REQUIRED)
+set(ABSEL_LIBARARY
+    absl::absl_check
+    absl::absl_log
+    absl::algorithm
+    absl::base
+    absl::bind_front
+    absl::bits
+    absl::btree
+    absl::cleanup
+    absl::cord
+    absl::core_headers
+    absl::debugging
+    absl::die_if_null
+    absl::dynamic_annotations
+    absl::flags
+    absl::flat_hash_map
+    absl::flat_hash_set
+    absl::function_ref
+    absl::hash
+    absl::layout
+    absl::log_initialize
+    absl::log_severity
+    absl::memory
+    absl::node_hash_map
+    absl::node_hash_set
+    absl::optional
+    absl::span
+    absl::status
+    absl::statusor
+    absl::strings
+    absl::synchronization
+    absl::time
+    absl::type_traits
+    absl::utility
+    absl::variant
+  )
+ 
+add_executable(prototest ${c_files})
+target_link_libraries(prototest ${PROTO_LIBARARY} ${UTF8RANGE_LIBRARY} ${ABSEL_LIBARARY})

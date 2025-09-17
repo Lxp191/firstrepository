@@ -1,0 +1,16 @@
+{
+  "configurations": [
+    {
+      "name": "Win32",
+      "includePath": [
+        "E:/CProgram/protobuf-32.0/_deps/absl-src",
+        "E:/CProgram/protobuf-32.0/src"
+      ],
+      "defines": [],
+      "compilerPath": "gcc.exe",
+      "cStandard": "c11",
+      "intelliSenseMode": "gcc-x64"
+    }
+  ],
+  "version": 4
+}

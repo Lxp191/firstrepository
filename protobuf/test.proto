@@ -1,0 +1,12 @@
+syntax="proto3";
+
+package example;
+
+message Test {
+    string name = 1;
+    repeated int32 age = 2;
+}
+
+service TestService {
+    rpc TestMethod(Test) returns (Test);
+}
