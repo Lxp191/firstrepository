@@ -12,8 +12,9 @@ list(APPEND CMAKE_PREFIX_PATH ${utf8_range_DIR})
 include_directories(E:/CProgram/protobuf-32.0/_deps/absl-src)
 include_directories(E:/CProgram/protobuf-32.0/src)
  
-
-# find_package(utf8_range  ${utf8_range_DIR}/libutf8_range.a)
+find_package(Protobuf CONFIG REQUIRED)
+find_package(utf8_range CONFIG REQUIRED)
+find_package(gRPC CONFIG REQUIRED)
 # find_package(utf8_validity  ${utf8_range_DIR}/utf8_validity.a)
 
 # set(UTF8RANGE_LIBRARY utf8_range::utf8_validity utf8_range::utf8_range)
@@ -57,10 +58,6 @@ set(ABSEL_LIBARARY
   )
 
 add_executable(prototest ${c_files})
-
-set(protobufLib E:/firstrepository/protobuf/libprotobuf.a)
-set(utf8_range ${utf8_range_DIR}/libutf8_range.a)
-set(utf8_validity ${utf8_range_DIR}/libutf8_validity.a)
-
-target_link_libraries(prototest ${protobufLib} ${ABSEL_LIBARARY} pthread ${utf8_range} ${utf8_validity})
+set(grpc++ "C:/Program Files (x86)/grpc/lib/libgrpc++_unsecure.a")
+target_link_libraries(prototest ${grpc++} gRPC::grpc Protobuf::libprotobuf ${ABSEL_LIBARARY} pthread utf8_range::utf8_range utf8_range::utf8_validity)
 
