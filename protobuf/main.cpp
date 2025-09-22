@@ -1,25 +1,32 @@
 #include <string>
 #include <iostream>
+#include <grpcpp/grpcpp.h>
 #include "test.pb.h"
+#include "test.grpc.pb.h"
+
+class TestServiceImpl final : public example::TestService::Service
+{
+public:
+    grpc::Status TestMethod(grpc::ServerContext *context, const example::Test *request, example::Test *response) override
+    {
+        std::cout << request->name() << std::endl;
+        for (int i = 0; i < request->age_size(); i++)
+        {
+            std::cout << request->age(i) << std::endl;
+        }
+
+        response->set_name("hello,this is server!");
+        return grpc::Status::OK;
+    }
+};
 
 int main(int argc, char *argv[])
 {
-    example::Test t;
-    t.set_name("hello world");
-    t.add_age(1);
-    t.add_age(2);
-    t.add_age(3);
-
-    auto outPut = t.SerializeAsString();
-
-    example::Test t2;
-    t2.ParseFromString(outPut);
-
-    std::cout << t2.name() << std::endl;
-    for (int i = 0; i < t2.age_size(); i++)
-    {
-        std::cout << t2.age(i) << std::endl;
-    }
-
+    TestServiceImpl service;
+    grpc::ServerBuilder builder;
+    builder.AddListeningPort("127.0.0.1:9091", grpc::InsecureServerCredentials());
+    builder.RegisterService(&service);
+    std::unique_ptr<grpc::Server> server(builder.BuildAndStart());
+    server->Wait();
     return 0;
 }

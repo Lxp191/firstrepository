@@ -4,7 +4,9 @@
       "name": "Win32",
       "includePath": [
         "E:/CProgram/protobuf-32.0/_deps/absl-src",
-        "E:/CProgram/protobuf-32.0/src"
+        "E:/CProgram/protobuf-32.0/src",
+        "C:/Program Files (x86)/protobuf/include",
+        "C:/Program Files (x86)/grpc/include"
       ],
       "defines": [],
       "compilerPath": "gcc.exe",
