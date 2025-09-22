@@ -1,3 +1,0 @@
-E:/firstrepository/protobuf/build/CMakeFiles/prototest.dir
-E:/firstrepository/protobuf/build/CMakeFiles/edit_cache.dir
-E:/firstrepository/protobuf/build/CMakeFiles/rebuild_cache.dir

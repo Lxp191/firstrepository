@@ -1,3 +1,0 @@
-G:\Program\CMake\bin\cmake.exe -E rm -f CMakeFiles\prototest.dir/objects.a
-G:\Program\MinGW\bin\ar.exe qc CMakeFiles\prototest.dir/objects.a @CMakeFiles\prototest.dir\objects1.rsp
-G:\Program\MinGW\bin\c++.exe -Wl,--whole-archive CMakeFiles\prototest.dir/objects.a -Wl,--no-whole-archive -o prototest.exe -Wl,--out-implib,libprototest.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\prototest.dir\linkLibs.rsp
